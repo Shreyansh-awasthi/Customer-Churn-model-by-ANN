@@ -40,7 +40,7 @@ if st.button("🔮 Evaluate Churn Probability", use_container_width=True):
 
     try:
         # Load assets
-        model = tf.keras.models.load_model('churn_model.keras')
+        model = tf.keras.models.load_model('churn_model.h5')
         with open('scaler.pkl', 'rb') as f:
             scaler = pickle.load(f)
             
@@ -63,7 +63,7 @@ if st.button("🔮 Evaluate Churn Probability", use_container_width=True):
             st.success(f"✅ **Loyal Customer:** Probability: **{probability:.2f}%** (Customer likely to stay)")
             
     except Exception as e:
-        st.warning("📁 **Awaiting exported model files.** Please ensure `churn_model.keras` and `scaler.pkl` are generated in this folder.")
+        st.warning("📁 **Awaiting exported model files.** Please ensure `churn_model.h5` and `scaler.pkl` are generated in this folder.")
         st.info("💡 *Showing structural UI preview:*")
         mock_prob = np.random.uniform(5, 95)
         if mock_prob > 50:
